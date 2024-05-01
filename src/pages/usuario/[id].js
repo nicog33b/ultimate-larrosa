@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import MenuUsuario from '../../components/USER/menuUsuario';
+import '../pages.css'
 const UsuarioPage = () => {
     const [userLogged, setUserLogged] = useState(false);
 
