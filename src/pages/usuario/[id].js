@@ -1,19 +1,12 @@
-import React from 'react';
-import './usuario.css'
-import MenuUsuario from './MenuUsuario';
-import Login from './Login';
-import Registro from './Registro';
-import CambiarContrasena from './CambiarContrasena';
-
+'use client'
+import React, { useState } from 'react';
+import MenuUsuario from '../../components/USER/menuUsuario';
 const UsuarioPage = () => {
+    const [userLogged, setUserLogged] = useState(false);
+
     return (
-        <div className='usuarioPage'>
+        <div className="min-h-screen bg-gray-100 py-10 px-5 md:px-20">
             <MenuUsuario />
-            <div className='usuarioContent'>
-                <Login />
-                <Registro />
-                <CambiarContrasena />
-            </div>
         </div>
     );
 }
