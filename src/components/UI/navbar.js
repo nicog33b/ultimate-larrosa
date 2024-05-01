@@ -74,49 +74,51 @@ const Navbar = () => {
         </div>
       </nav>
       {isMenuOpen && (
-        <div onClick={handleClose} className="fixed inset-0 bg-black bg-opacity-50 z-40">
-       <aside className="relative lg:w-1/3 w-[81%] bg-amber-50 z-50 h-full shadow-xl" ref={menuRef}>
-            <div className="flex flex-col h-full justify-between p-3">
-        <div>
-          {/* Botón para cerrar el menú */}
-          <button onClick={toggleMenu} className="absolute top-3 right-3 text-gray-500 hover:text-gray-700">
-            <IoClose className="text-2xl text-black" />
-          </button>
-          
-          {/* Espacio superior para iniciar sesión y registrarse */}
-          <div className='flex justify-between items-center p-4'>
-            <Link href="/iniciar-sesion" className="text-lg font-medium py-2 px-4 rounded-lg bg-gradient-to-r from-green-300 to-green-200 hover:bg-gradient-to-l text-black hover:from-green-200 hover:to-green-300 transition-colors duration-300">
-              Iniciar Sesión / Registrarse
-            </Link>
-           
-          </div>
-
-          {/* Enlaces principales */}
-          <h3 className="text-xl text-orange-400  font-bold mt-4 mb-2 px-4">Navegación</h3>
-          <ul className="space-y-4 p-4">
-        
-            <li><Link href="/" onClick={toggleMenu} className="block text-xl text-zinc-900 font-serif hover:bg-gray-300 p-3 rounded">Inicio</Link></li>
-            <li><Link href="/tienda" onClick={toggleMenu} className="block text-xl text-zinc-900 font-serif hover:bg-gray-300 p-3 rounded">Tienda</Link></li>
-            <li><Link href="/somos" onClick={toggleMenu} className="block text-xl text-zinc-900 font-serif hover:bg-gray-300 p-3 rounded">Somos</Link></li>
-          </ul>
-
-          {/* Categorías sin separación adicional */}
-          <h3 className="text-xl text-orange-400  font-bold mt-4 mb-2 px-4">Categorías</h3>
-          <ul className="space-y-3 px-4 pb-4">
-            <li><a href="#homeopatia" className="block text-lg py-2 px-2 text-zinc-900 hover:bg-gray-300 rounded">Homeopatía</a></li>
-            <li><a href="#harinas" className="block text-lg py-2 px-2 text-black hover:bg-gray-300 rounded">Harinas</a></li>
-          </ul>
-        </div>
-
-        {/* Iconos de redes sociales */}
-        <div className="flex justify-center space-x-4 pb-4 px-4">
-          <Link href="#facebook"><IoLogoFacebook className="text-2xl text-gray-600 hover:text-black"/></Link>
-          <Link href="#whatsapp"><IoLogoWhatsapp className="text-2xl text-gray-600 hover:text-black"/></Link>
-          <Link href="#instagram"><IoLogoInstagram className="text-2xl text-gray-600 hover:text-black"/></Link>
-        </div>
-      </div>
-    </aside>
-    </div>
+       <div onClick={handleClose} className="fixed inset-0 bg-black bg-opacity-50 z-40">
+       <aside className="relative lg:w-1/3 w-[81%] bg-amber-50 z-50 h-full shadow-xl overflow-hidden" ref={menuRef}>
+         <div className="flex flex-col h-full justify-between p-3">
+           <div>
+             {/* Botón para cerrar el menú */}
+             <button onClick={toggleMenu} className="absolute top-3 right-3 text-gray-500 hover:text-gray-700">
+               <IoClose className="text-2xl text-black" />
+             </button>
+             
+             {/* Contenedor principal con overflow auto */}
+             <div className='overflow-auto' style={{ maxHeight: 'calc(100vh - 4rem)' }}>
+               {/* Espacio superior para iniciar sesión y registrarse */}
+               <div className='flex justify-between items-center p-4'>
+                 <Link href="/iniciar-sesion" className="text-lg font-medium py-2 px-4 rounded-lg bg-gradient-to-r from-green-300 to-green-200 hover:bg-gradient-to-l text-black hover:from-green-200 hover:to-green-300 transition-colors duration-300">
+                   Iniciar Sesión / Registrarse
+                 </Link>
+               </div>
+     
+               {/* Enlaces principales */}
+               <h3 className="text-xl text-orange-400  font-bold mt-4 mb-2 px-4">Navegación</h3>
+               <ul className="space-y-4 p-4">
+                 <li><Link href="/" onClick={toggleMenu} className="block text-xl text-zinc-900 font-serif hover:bg-gray-300 p-3 rounded">Inicio</Link></li>
+                 <li><Link href="/tienda" onClick={toggleMenu} className="block text-xl text-zinc-900 font-serif hover:bg-gray-300 p-3 rounded">Tienda</Link></li>
+                 <li><Link href="/somos" onClick={toggleMenu} className="block text-xl text-zinc-900 font-serif hover:bg-gray-300 p-3 rounded">Somos</Link></li>
+               </ul>
+     
+               {/* Categorías sin separación adicional */}
+               <h3 className="text-xl text-orange-400  font-bold mt-4 mb-2 px-4">Categorías</h3>
+               <ul className="space-y-3 px-4 pb-4">
+                 <li><a href="#homeopatia" className="block text-lg py-2 px-2 text-zinc-900 hover:bg-gray-300 rounded">Homeopatía</a></li>
+                 <li><a href="#harinas" className="block text-lg py-2 px-2 text-black hover:bg-gray-300 rounded">Harinas</a></li>
+               </ul>
+             </div>
+     
+             {/* Iconos de redes sociales */}
+             <div className="flex justify-center space-x-4 pb-4 px-4">
+               <Link href="#facebook"><IoLogoFacebook className="text-2xl text-gray-600 hover:text-black"/></Link>
+               <Link href="#whatsapp"><IoLogoWhatsapp className="text-2xl text-gray-600 hover:text-black"/></Link>
+               <Link href="#instagram"><IoLogoInstagram className="text-2xl text-gray-600 hover:text-black"/></Link>
+             </div>
+           </div>
+         </div>
+       </aside>
+     </div>
+     
      
       )}
     </>
