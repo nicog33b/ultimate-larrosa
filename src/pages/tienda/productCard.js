@@ -1,55 +1,50 @@
 import React, { useState } from "react";
 import Image from "next/image";
-
-import '../pages.css';
-
+import { FaCartPlus } from "react-icons/fa";
+import { MdOutlinePageview } from "react-icons/md";
 
 const ProductCard = () => {
-    const [showButtons, setShowButtons] = useState(false);
+  const [showButtons, setShowButtons] = useState(false);
 
-    const handleMouseEnter = () => {
-        setShowButtons(true);
-    };
+  const handleMouseEnter = () => {
+    setShowButtons(true);
+  };
 
-    const handleMouseLeave = () => {
-        setShowButtons(false);
-    };
+  const handleMouseLeave = () => {
+    setShowButtons(false);
+  };
 
-    return (
-        <div className="max-w-md mx-auto p-4 shadow-md relative">
-            <div
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-                className="relative rounded overflow-hidden"
-            >
-                <Image
-                    src="/aceitedecoco.webp"
-                    alt="Producto Increíble"
-                    layout="responsive"
-                    width={400}
-                    height={400}
-                    objectFit="cover"
-                />
-                {showButtons && (
-                    <div className="absolute top-4 right-4 flex flex-col space-y-2">
-                        <button className="bg-emerald-500 hover:bg-green-600 text-white px-3 py-2 rounded-md">
-                         
-                        </button>
-                        <button className="bg-yellow-600 hover:bg-amber-400 text-white px-3 py-2 rounded-md">
-                       
-                        </button>
-                    </div>
-                )}
-            </div>
-            <div className="text-center mt-4">
-                <h2 className="text-2xl font-semibold mb-2">Producto Increíble</h2>
-                <p className="text-gray-600 mb-4">$19.99</p>
-                <div className="flex justify-center space-x-4">
-                    {/* Resto del código de los botones y cantidad */}
-                </div>
-            </div>
+  return (
+    <div className="group relative bg-white rounded-lg shadow-md max-w-sm mx-auto p-4 cursor-pointer hover:shadow-lg transform hover:scale-101 transition duration-300">
+      <div className="flex flex-col items-center">
+        <Image
+          src="/aceitedecoco.webp"
+          alt="Producto Increíble"
+          width={300}
+          height={300}
+          objectFit="cover"
+          className="rounded-lg mb-4"
+        />
+        <div className="text-center">
+          <h3 className="text-sm font-serif mb-2 kalam-light">Producto Increíble</h3>
+     
+        </div>     <p className="text-zinc-900 font-serif text-sm border p-2 rounded" ><span className="text-green-800 mr-1">$</span>19.99</p>
+      </div>
+      <div className={`absolute bottom-0 left-0 right-0 bg-emerald-800 opacity-0  group-hover:opacity-100 transition duration-300`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <div className="flex justify-center items-center space-x-2 p-2">
+          <button className="bg-transparent hover:bg-gray-200 text-white  rounded-full p-2 hover:text-black">
+            <FaCartPlus className="text-xl " />
+          </button>
+          <button className="bg-transparent hover:bg-gray-200 text-white rounded-full p-2 hover:text-black">
+            <MdOutlinePageview className="text-2xl" />
+          </button>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default ProductCard;

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import SessionModal from '@/pages/session';
+import SearchModal from './searchModal';
 // Iconos
 import { IoSearch, IoPersonCircle, IoCart, IoMenu, IoClose, IoLogoFacebook, IoLogoInstagram, IoLogoWhatsapp } from 'react-icons/io5';
 
@@ -11,9 +12,15 @@ import Logo from './logo';
 
 const Navbar = () => {
   const [cartCount, setCartCount] = useState(0);
+
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+
   const menuRef = useRef(null);
   const router = useRouter(); // Usamos useRouter para la navegación
+
   const [showModal, setShowModal] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -71,6 +78,17 @@ const Navbar = () => {
     }
   };
 
+
+  //OPEN modal search de productos para el cliente: 
+  
+  const toggleSearch = () => setIsSearchOpen(!isSearchOpen);
+  const handleCloseMenu = (e) => {
+    if (!menuRef.current.contains(e.target)) {
+      setIsMenuOpen(false);
+    }
+  };
+
+
   return (
     <>
       <nav className="bg-gradient-to-r from-lime-200 to-lime-200 text-white p-3 shadow-md rounded-sm">
@@ -94,9 +112,9 @@ const Navbar = () => {
               <IoCart className="text-3xl text-gray-600" />
               <span className="absolute -top-3 -right-3 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full">{cartCount}</span>
             </Link>
-            <Link href="/search" className="flex items-center p-2 transition-all duration-300 ease-in-out transform hover:scale-110 rounded-full hover:bg-amber-100">
+            <button onClick={toggleSearch} className="flex items-center p-2 transition-all duration-300 ease-in-out transform hover:scale-110 rounded-full hover:bg-amber-100">
               <IoSearch className="text-3xl text-gray-600" />
-            </Link>
+            </button>
           </div>
         </div>
       </nav>
@@ -136,7 +154,7 @@ const Navbar = () => {
              </div>
      
              {/* Iconos de redes sociales */}
-             <div className="flex justify-center space-x-4 pb-4 px-4">
+             <div className="flex justify-center content-end space-x-4 pb-4 px-4 ">
                <Link href="#facebook"><IoLogoFacebook className="text-2xl text-gray-600 hover:text-black"/></Link>
                <Link href="#whatsapp"><IoLogoWhatsapp className="text-2xl text-gray-600 hover:text-black"/></Link>
                <Link href="#instagram"><IoLogoInstagram className="text-2xl text-gray-600 hover:text-black"/></Link>
@@ -147,10 +165,14 @@ const Navbar = () => {
         </div>
       )}
 
+
+<SearchModal isOpen={isSearchOpen} onClose={toggleSearch} />
       {/* Integración del Modal para iniciar sesión o registrarse */}
       {showModal && (
     <SessionModal showModal={showModal} handleCloseModal={handleCloseModal} />
       )}
+
+      
 
     </>
   );
